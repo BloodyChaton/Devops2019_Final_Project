@@ -14,6 +14,10 @@ variable "admin_name" {
   default = "test-client"
 } 
 
+variable "mongodb_name" {
+  default = "test-db"
+} 
+
 variable "admin_firewall" {
   default = "test-admin-firewall"
 } 
