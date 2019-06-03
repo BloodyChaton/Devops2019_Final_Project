@@ -18,12 +18,12 @@ variable "admin_firewall" {
   default = "production-admin-firewall"
 } 
 
-variable "ssh_keys" {
-  default = "production-ssh-key"
-}
-
 variable "admin_subnetwork_name" {
   default = "production-admin-subnetwork"
+}
+
+variable "mongodb_subnetwork_name" {
+  default = "production-mongodb-subnetwork"
 }
 
 variable "kube_subnetwork_name" {
@@ -42,7 +42,6 @@ variable "kube_cluster_name" {
   default = "prod-cluster"
 }
 
-
 variable "kube_node_pool_1" {
   default = "prod-pool-1"
 }
@@ -52,7 +51,7 @@ variable "kube_node_pool_2" {
 }
 
 variable "project_name" {
-  default = "projectfinal"
+  default = "production"
 }
 variable "master_ip" {
   default = "10.5.0.0/24"
@@ -81,6 +80,18 @@ variable "kube_subnetwork_node" {
 variable "kube_subnetwork_service" {
   default = "10.8.0.0/21"
 } 
+
+variable "mongodb_adress" {
+  default = "10.9.0.10"
+} 
+
+variable "mongodb_subnetwork" {
+  default = "10.9.0.0/21"
+} 
+
+variable "ssh_keys" {
+  default = "production-ssh-key"
+}
 
 variable "public_key" {
   default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC25G/wnpjYHounebrOuLmEjrb3FSpXCTUDATuBXfISLeg4LYUdl6Xdf5gEpnC4tu1vrWJ8Kx8OtJbcErKcaN6fa8x0M8O5C3xyuaAcnjc4wZsJExXZTLE7cuJrdVmtdrn6slA+bYzyecFb35h8S6gO1uyNGNgjbkwdPU/khKzqwHd2gbxg56NNQFMFGwlLV2Lp9BubGD+ksMwUS9G81c0F6qEgdJ3bPfOql03qEwA+HeMdBWlXaA2lPpiV9i6MgbVNGLA6qeUL1sMp3jA5FdRq9SOxVO9fncz9Pbm04k8li0AtN7w/4lYtC0SzL8Y+5zirc32+ovCe9eFWde7Vz0M5 adminl@localhost.localdomain"
