@@ -14,6 +14,10 @@ variable "admin_name" {
   default = "production-client"
 } 
 
+variable "mongodb_name" {
+  default = "production-db"
+} 
+
 variable "admin_firewall" {
   default = "production-admin-firewall"
 } 

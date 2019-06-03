@@ -1,4 +1,4 @@
-resource "google_compute_instance" "client-production" {
+resource "google_compute_instance" "client" {
   name         = "${var.admin_name}"
   machine_type = "n1-standard-1"
   zone         = "${var.zone}"
@@ -22,7 +22,7 @@ resource "google_compute_instance" "client-production" {
 }
 
 
-resource "google_compute_instance" "client-production" {
+resource "google_compute_instance" "mongodb" {
   name         = "${var.mongodb_name}"
   machine_type = "n1-standard-1"
   zone         = "${var.zone}"
