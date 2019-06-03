@@ -11,75 +11,75 @@ variable "zone" {
 } 
 
 variable "admin_name" {
-  default = "production-client"
+  default = "test-client"
 } 
 
 variable "admin_firewall" {
-  default = "production-admin-firewall"
+  default = "test-admin-firewall"
 } 
 
 variable "ssh_keys" {
-  default = "production-ssh-key"
+  default = "test-ssh-key"
 }
 
 variable "admin_subnetwork_name" {
-  default = "production-admin-subnetwork"
+  default = "test-admin-subnetwork"
 }
 
 variable "kube_subnetwork_name" {
-  default = "prod-kube-subnetwork-pod"
+  default = "test-kube-subnetwork-pod"
 }
 
 variable "kube_subnetwork_node_name" {
-  default = "prod-kube-subnetwork-node"
+  default = "test-kube-subnetwork-node"
 }
 
 variable "kube_subnetwork_serv_name" {
-  default = "prod-kube-subnetwork-serv"
+  default = "test-kube-subnetwork-serv"
 }
 
 variable "kube_cluster_name" {
-  default = "prod-cluster"
+  default = "test-cluster"
 }
 
 
 variable "kube_node_pool_1" {
-  default = "prod-pool-1"
+  default = "test-pool-1"
 }
 
 variable "kube_node_pool_2" {
-  default = "prod-pool-2"
+  default = "test-pool-2"
 }
 
 variable "project_name" {
   default = "projectfinal"
 }
 variable "master_ip" {
-  default = "10.5.0.0/24"
+  default = "11.5.0.0/24"
 } 
 
 variable "master_ipv4_cidr" {
-  default = "10.15.0.0/28" 
+  default = "11.15.0.0/28" 
 } 
 
 variable "admin_network" {
-  default = "10.5.0.10"
+  default = "11.5.0.10"
 } 
 
 variable "admin_subnetwork" {
-  default = "10.5.0.0/21"
+  default = "11.5.0.0/21"
 } 
 
 variable "kube_subnetwork_pod" {
-  default = "10.6.0.0/21"
+  default = "11.6.0.0/21"
 } 
 
 variable "kube_subnetwork_node" {
-  default = "10.7.0.0/21"
+  default = "11.7.0.0/21"
 } 
 
 variable "kube_subnetwork_service" {
-  default = "10.8.0.0/21"
+  default = "11.8.0.0/21"
 } 
 
 variable "public_key" {
