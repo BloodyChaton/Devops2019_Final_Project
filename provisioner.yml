@@ -25,6 +25,14 @@
   tags:
     - nexus
 
+- name: Install Docker
+  hosts: maven 
+  become: True
+  roles:
+    - docker 
+  tags:
+    - docker
+
 - name: Install Maven
   hosts: maven 
   become: True

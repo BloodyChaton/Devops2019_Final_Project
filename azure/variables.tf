@@ -55,3 +55,7 @@ variable "useradmin" {
 variable "nametag" {
     type= "list"
 }
+
+variable "DNS" {
+    type= "string"
+}
