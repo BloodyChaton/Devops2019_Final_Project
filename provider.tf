@@ -46,6 +46,13 @@ resource "google_compute_subnetwork" "admin" {
   network       = "${google_compute_network.my-network.self_link}"
 }
 
+resource "google_compute_subnetwork" "mongodb" {
+  name          = "${var.mongodb_subnetwork_name}"
+  ip_cidr_range = "${var.mongodb_subnetwork}"
+  region        = "${var.region}"
+  network       = "${google_compute_network.my-network.self_link}"
+}
+
 resource "google_compute_subnetwork" "kube" {
   name          = "${var.kube_subnetwork_name}"
   ip_cidr_range = "${var.kube_subnetwork_pod}"
