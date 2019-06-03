@@ -1,0 +1,14 @@
+[admin]
+104.42.42.190
+
+[jenkins]
+10.0.0.10
+
+[maven]
+10.0.0.11
+
+[nexus]
+10.0.0.12
+
+[all:vars]
+ansible_user=azureuser
