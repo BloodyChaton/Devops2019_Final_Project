@@ -65,7 +65,7 @@ variable "master_ipv4_cidr" {
   default = "10.15.0.0/28" 
 } 
 
-variable "admin_network" {
+variable "admin_adress" {
   default = "10.5.0.10"
 } 
 
