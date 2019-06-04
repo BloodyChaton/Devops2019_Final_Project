@@ -6,7 +6,7 @@
     <groupId>com.wunderit</groupId>
     <artifactId>restfulweb</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,6 +35,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+            
+        <dependency>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -65,24 +72,37 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+              <plugin>
                 <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.5</version>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.3</version>
+                <!-- Wire up to the default build phases -->
+                <executions>
+                  <execution>
+                    <id>default</id>
+                    <goals>
+                      <goal>build</goal>
+                    </goals>
+                  </execution>
+                </executions>
                 <configuration>
-                <imageName>dockerimage</imageName>
-                <baseImage>java</baseImage>
-                <entryPoint>["java", "-jar", "/${project.build.finalName}.war"]</entryPoint>
-                <!-- copy the service's jar file from target into the root directory of the image --> 
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.war</include>
-                        </resource>
-                    </resources>
+                  <repository>docker.io/borisfyot/exemple</repository>
+                  <tag>1.0.0</tag>
                 </configuration>
-            </plugin>
+                <dependencies>
+                  <!-- To make this work on JDK 9+ -->
+                  <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>javax.activation-api</artifactId>
+                    <version>1.2.0</version>
+                  </dependency>
+                  <dependency>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-client</artifactId>
+                    <version>8.16.0</version>
+                  </dependency>  
+                </dependencies>
+              </plugin>
         </plugins>
     </build>
 
