@@ -57,13 +57,13 @@
 
 - name: Configure Java environment variables
   template: 
-    src: java.sh
-    dest: /etc/profile.d/java.sh
+    src: ja/opt/openjdk-12.0.1
+    dest: //opt/openjdk-12.0.1
    
-# - name: Exports/Run maven env file for make M2_HOME available globally
-#   shell: reboot
-#   async: 0
-#   poll: 0
+# - name: E/opt/openjdk-12.0.1
+#   shell: /opt/openjdk-12.0.1
+#   async: /opt/openjdk-12.0.1
+#   poll: 0/opt/openjdk-12.0.1
 
 # - name: Waiting for server to come back 
 #   local_action: wait_for host={{ inventory_hostname }} state=started

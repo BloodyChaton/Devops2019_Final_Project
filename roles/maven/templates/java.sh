@@ -1,3 +1,3 @@
-JAVA_HOME=/opt/openjdk-12.0.1
+JAVA_HOME=/opt/jdk-12.0.1
 PATH=$PATH:$JAVA_HOME/bin
 export PATH JAVA_HOME
