@@ -12,8 +12,8 @@
     dest: /opt/
     remote_src: yes
 
-- name: Configure jave in environment variables
-  template: 
+- name: Configure java in environment variables
+  template:
     src: java.sh
     dest: /etc/profile.d/java.sh
 
@@ -31,7 +31,7 @@
   user:
     name: "jenkins"
     group: "jenkins"
-    groups: "wheel"
+    groups: "wheel, docker"
     create_home: yes
     home: "/var/lib/jenkins"
     password: "$6$salt$nmjoEJ4/LQ9yrP..HQYQyRYq9ubXYlOipntlJE89H5YRo1uVD2v9QuMQZVWD.lYx0DIXAPsbhsX2vLrZiMKk3."
@@ -55,10 +55,26 @@
     src: maven.sh
     dest: /etc/profile.d/maven.sh
 
-- name: Configure Java environment variables
-  template: 
-    src: ja/opt/openjdk-12.0.1
-    dest: //opt/openjdk-12.0.1
+- name: restart system to reboot to newest kernel
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+
+- name: wait for 10 seconds
+  pause:
+    seconds: 10
+
+- name: wait for the system to reboot
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 60
+
+# - name: Configure Java environment variables
+#   template: 
+#     src: ja/opt/openjdk-12.0.1
+#     dest: //opt/openjdk-12.0.1
    
 # - name: E/opt/openjdk-12.0.1
 #   shell: /opt/openjdk-12.0.1
