@@ -6,7 +6,8 @@
     <groupId>com.wunderit</groupId>
     <artifactId>restfulweb</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
+    <packaging>war</packaging>
+    
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -36,11 +37,51 @@
         </dependency>
     </dependencies>
 
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshot</id>
+            <name>devops-app-01-snapshots</name>
+            <url>http://192.168.33.150:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-release</id>
+            <name>devops-app-01-releases</name>
+            <url>http://192.168.33.150:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+    <scm>
+        <connection>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</connection>
+        <url>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</url>
+        <developerConnection>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.5</version>
+                <configuration>
+                <imageName>dockerimage</imageName>
+                <baseImage>java</baseImage>
+                <entryPoint>["java", "-jar", "/${project.build.finalName}.war"]</entryPoint>
+                <!-- copy the service's jar file from target into the root directory of the image --> 
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.war</include>
+                        </resource>
+                    </resources>
+                </configuration>
             </plugin>
         </plugins>
     </build>
