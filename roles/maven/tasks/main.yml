@@ -1,10 +1,21 @@
 ---
 # tasks file for maven
 
-- name : Download Java 1.8 
-  yum:
-    name: java-1.8.0-openjdk-devel
-    state: present
+- name : Download Java 1.12 
+  get_url:
+    url: https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz
+    dest: /opt/openjdk-12.0.1_linux-x64_bin.tar.gz
+
+- name : Unarchive Java 1.12 
+  unarchive:
+    src: /opt/openjdk-12.0.1_linux-x64_bin.tar.gz
+    dest: /opt/
+    remote_src: yes
+
+- name: Configure jave in environment variables
+  template: 
+    src: java.sh
+    dest: /etc/profile.d/java.sh
 
 - name : Install Git 
   yum:
@@ -23,7 +34,7 @@
     groups: "wheel"
     create_home: yes
     home: "/var/lib/jenkins"
-    password: "jenkins"
+    password: "$6$salt$nmjoEJ4/LQ9yrP..HQYQyRYq9ubXYlOipntlJE89H5YRo1uVD2v9QuMQZVWD.lYx0DIXAPsbhsX2vLrZiMKk3."
     shell: "/bin/bash"
     state: present
 
