@@ -44,9 +44,9 @@ variable "VM"{
     type= "list"
 }
 
-variable "sshkey" {
-    type= "string"
-}
+# variable "sshkey" {
+#     type= "string"
+# }
 
 variable "useradmin" {
     type= "string"
