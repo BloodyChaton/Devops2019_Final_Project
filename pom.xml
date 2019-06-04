@@ -6,8 +6,7 @@
     <groupId>com.wunderit</groupId>
     <artifactId>restfulweb</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -17,6 +16,30 @@
     <properties>
         <java.version>12</java.version>
     </properties>
+
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshot</id>
+            <name>devops-app-01-snapshots</name>
+            <url>http://admin-projetci.westus.cloudapp.azure.com/nexus/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-release</id>
+            <name>devops-app-01-releases</name>
+            <url>http://admin-projetci.westus.cloudapp.azure.com/nexus/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+    
+
+
+    <scm>
+        <connection>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</connection>
+        <url>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</url>
+        <developerConnection>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
 
     <dependencies>
         <!-- libraries for working with MongoDB servers -->
@@ -35,36 +58,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-            
-        <dependency>
-            <groupId>com.spotify</groupId>
-            <artifactId>docker-maven-plugin</artifactId>
-            <version>1.2.0</version>
-        </dependency>
-
     </dependencies>
-
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshot</id>
-            <name>devops-app-01-snapshots</name>
-            <url>http://192.168.33.150:8081/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus-release</id>
-            <name>devops-app-01-releases</name>
-            <url>http://192.168.33.150:8081/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
-
-
-    <scm>
-        <connection>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</connection>
-        <url>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</url>
-        <developerConnection>scm:git:git@github.com:BorisFyot/Devops2019S1_projet_CD.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
 
     <build>
         <plugins>
@@ -72,37 +66,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-              <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.3</version>
-                <!-- Wire up to the default build phases -->
-                <executions>
-                  <execution>
-                    <id>default</id>
-                    <goals>
-                      <goal>build</goal>
-                    </goals>
-                  </execution>
-                </executions>
-                <configuration>
-                  <repository>docker.io/borisfyot/exemple</repository>
-                  <tag>1.0.0</tag>
-                </configuration>
-                <dependencies>
-                  <!-- To make this work on JDK 9+ -->
-                  <dependency>
-                    <groupId>javax.activation</groupId>
-                    <artifactId>javax.activation-api</artifactId>
-                    <version>1.2.0</version>
-                  </dependency>
-                  <dependency>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>docker-client</artifactId>
-                    <version>8.16.0</version>
-                  </dependency>  
-                </dependencies>
-              </plugin>
         </plugins>
     </build>
 
