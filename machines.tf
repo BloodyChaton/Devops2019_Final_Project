@@ -15,7 +15,7 @@ resource "google_compute_instance" "client" {
     # A default network is created for all GCP projects
     network       = "${google_compute_network.my-network.name}"
     subnetwork    = "${google_compute_subnetwork.admin.name}"
-    network_ip    = "${var.admin_network}"
+    network_ip    = "${var.admin_adress}"
     access_config = {
     }
   }
@@ -39,6 +39,6 @@ resource "google_compute_instance" "db" {
     # A default network is created for all GCP projects
     network       = "${google_compute_network.my-network.name}"
     subnetwork    = "${google_compute_subnetwork.mongodb.name}"
-    network_ip    = "${var.mongodb_subnetwork}"
+    network_ip    = "${var.mongodb_adress}"
   }
 }
