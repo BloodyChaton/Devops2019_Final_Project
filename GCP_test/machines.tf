@@ -42,3 +42,12 @@ resource "google_compute_instance" "db" {
     network_ip    = "${var.mongodb_adress}"
   }
 }
+
+resource "google_compute_project_metadata_item" "oslogin" {
+  key     = "enable-oslogin"
+  value   = "TRUE"
+}
+# resource "google_compute_project_metadata_item" "sshconnection" {
+#   key     = "ssh-keys"
+#   value   = "user"
+# }
