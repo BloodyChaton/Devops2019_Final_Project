@@ -34,26 +34,25 @@ pipeline {
         
         stage('tfinit') {
             steps {
-                sh 'ls'
-                sh 'pwd'
-                sh 'cd GCP_test'
-                sh 'ls'
-                sh 'pwd'
-                sh 'terraform init'
+                dir('GCP_test') {
+                    sh 'ls'
+                    sh 'pwd'
+                    sh 'terraform init'
+                }
             }
         }
 
-        stage('tfplan') {
-            steps {
-                sh 'terraform plan'
-            }
-        }
+        // stage('tfplan') {
+        //     steps {
+        //         sh 'terraform plan'
+        //     }
+        // }
 
-        stage('tfapply') {
-            steps {
-                sh 'terraform apply -auto-approve'
-            }
-        }
+        // stage('tfapply') {
+        //     steps {
+        //         sh 'terraform apply -auto-approve'
+        //     }
+        // }
         
 	//     stage('dockerhub') {
     //         environment {
