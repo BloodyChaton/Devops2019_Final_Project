@@ -2,3 +2,7 @@ azure/terraform.tfstate
 azure/terraform.tfstate.backup
 azure/.terraform
 azure/.terraform/*
+GCP_test/terraform.tfstate
+GCP_test/terraform.tfstate.backup
+GCP_PROD/terraform.tfstate
+GCP_PROD/terraform.tfstate.backup
