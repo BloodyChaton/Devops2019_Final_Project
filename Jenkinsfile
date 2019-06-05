@@ -34,7 +34,11 @@ pipeline {
         
         stage('tfinit') {
             steps {
+                sh 'ls'
+                sh 'pwd'
                 sh 'cd GCP_test'
+                sh 'ls'
+                sh 'pwd'
                 sh 'terraform init'
             }
         }
