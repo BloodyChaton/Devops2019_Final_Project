@@ -19,10 +19,18 @@ pipeline {
             }
         }
         
-        stage('image') {
-            steps {
-                sh 'docker build -t example:1 .'
+	    stage('dockerhub') {
+            environment {
+     //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+     //         IMAGE = readMavenPom().getArtifactId()
+                VERSION = readMavenPom().getVersion()
             }
+		    steps {
+	            sh "echo ${VERSION}"
+	            sh 'docker images'
+		        sh 'docker push borisfyot/app:${VERSION}'
+		    }
         }
+        
     }
 }
