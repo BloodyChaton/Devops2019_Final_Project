@@ -104,3 +104,7 @@ variable "public_key" {
 variable "ssh_user" {
   default = "adminl"
 }
+
+variable "sshKeys_user" {
+  default = "gcpuser"
+}
