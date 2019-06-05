@@ -18,7 +18,7 @@
     </properties>
 
 
-    <distributionManagement>
+    <!--distributionManagement>
         <snapshotRepository>
             <id>nexus-snapshot</id>
             <name>devops-app-01-snapshots</name>
@@ -38,7 +38,7 @@
         <url>scm:git:git@github.com:BorisFyot/Devops2019_Final_Project.git</url>
         <developerConnection>scm:git:git@github.com:BorisFyot/Devops2019_Final_Project.git</developerConnection>
         <tag>HEAD</tag>
-    </scm>
+    </scm-->
 
 
     <dependencies>
