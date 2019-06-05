@@ -3,9 +3,9 @@ pipeline {
         label 'mavenslave'
     }
 
-    environment {
-        SVC_ACCOUNT_KEY = credentials('jsonterraform')
-    }
+    // environment {
+    //     SVC_ACCOUNT_KEY = credentials('jsonterraform')
+    // }
     // tools {
     //     maven 'maven'
     // }
@@ -17,11 +17,11 @@ pipeline {
 			}
         }
 
-        stage('GCPcredentials') {
-            steps {
-                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > united-lane-241907-c7fa43cedef5.json'
-            }
-        }
+        // stage('GCPcredentials') {
+        //     steps {
+        //         sh 'echo $SVC_ACCOUNT_KEY | base64 -d > united-lane-241907-c7fa43cedef5.json'
+        //     }
+        // }
 
         stage('tooling') {
             steps {
