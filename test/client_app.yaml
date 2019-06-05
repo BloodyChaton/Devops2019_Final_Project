@@ -1,25 +1,24 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: hello-pods
-  namespace: deployment
-  labels: 
-  		app: apps
+  name: test-app-pods
+  namespace: kube
+  labels:
+    app: apps
 spec:
   replicas: 2
   selector:
     matchLabels:
-		app: apps
+      app: apps
   template:
     metadata:
       name: hello-go
       namespace: deployment
       labels:
-	  	app: apps
-spec:
-  spec:
-  containers:
-  - name: apps
-    image: borisfyot/app:1.0.0-SNAPSHOT
-  imagePullSecrets:
-  - name: thesecretkey-m8gh5b2d5c
+        app: apps
+    spec:
+     containers:
+     - name: apps
+       image: borisfyot/app:1.0.0-SNAPSHOT
+     imagePullSecrets:
+      - name: thesecretkey-m8gh5b2d5c
