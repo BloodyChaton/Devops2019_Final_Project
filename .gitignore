@@ -1,4 +1,4 @@
 azure/terraform.tfstate
-azure/terraform.tfstatebackup
+azure/terraform.tfstate.backup
 azure/.terraform
 azure/.terraform/*
