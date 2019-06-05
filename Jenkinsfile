@@ -1,8 +1,7 @@
 pipeline {
-    agent any
-    // agent {
-    //     label 'mavenslave'
-    // }
+    agent {
+        label 'mavenslave'
+    }
 
     environment {
         SVC_ACCOUNT_KEY = credentials('jsonterraform')
@@ -20,7 +19,6 @@ pipeline {
 
         stage('GCPcredentials') {
             steps {
-                sh 'sudo yum install openssl'
                 sh 'echo $SVC_ACCOUNT_KEY | base64 -d > united-lane-241907-c7fa43cedef5.json'
             }
         }
