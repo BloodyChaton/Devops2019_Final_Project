@@ -6,7 +6,7 @@ pipeline {
 
     environment {
         SVC_ACCOUNT_KEY = credentials('jsonterraform')
-}
+    }
     // tools {
     //     maven 'maven'
     // }
@@ -29,7 +29,8 @@ pipeline {
                 script {
                     def tfHome = tool name: 'terraform'
                     env.PATH = "${tfHome}:${env.PATH}"
-                } 
+                }
+            } 
         }
         
         stage('tfinit') {
