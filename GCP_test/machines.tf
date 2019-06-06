@@ -48,5 +48,7 @@ resource "google_compute_instance" "db" {
     network       = "${google_compute_network.my-network.name}"
     subnetwork    = "${google_compute_subnetwork.mongodb.name}"
     network_ip    = "${var.mongodb_adress}"
+    access_config = {
+    }
   }
 }
