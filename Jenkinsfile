@@ -4,7 +4,7 @@ pipeline {
     }
 
     environment {
-        SVC_ACCOUNT_KEY = credentials('jsonterraform')
+        SVC_ACCOUNT_KEY = credentials('json2')
     }
     tools {
         maven 'maven'
