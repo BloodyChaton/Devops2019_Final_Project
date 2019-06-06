@@ -2,41 +2,46 @@
 Luc, Boris
 
 Merci de nous avoir fait confiance pour ce projet. 
-Dans ce document nous allons vous décrire les étapes qui ont été accomplis par l'équipe et celle n'ayant pas encore pu être automatisée. 
+Dans ce document nous allons vous décrire les étapes qui ont été accomplies par l'équipe et celles n'ayant pas encore pu être automatisées. 
 
-Attention : Le projet est actuellement qu'en partie réussie et nécessite encore certaines interventions humaines que nous allons décrire. 
+Attention : Le projet n'est pas encore achevé et nécessite encore certaines interventions humaines que nous allons décrire. 
 
-Les étapes qui ont été automatisé via le fichier jenkins file sont les suivantes :
-- L'installation automatique des environements d'outillage. 
-	-	Une machine avec jenkins
-	-	Une machine mavens / docker (slave jenkins)
-	-	Une machine nexus
-	-	Un serveur Apache, reverse proxy. 
-	-	La creation d'une image docker a partir d'un build maven et son push sur un docker hub. 
-	-	La livraison de l'image docker hub sur le cluster TEST.
+Les étapes qui ont été automatisées via le fichier jenkinsfile sont les suivantes :
+	-	Le déploiement de l'architecture de test et production sur google cloud:
+		- 	Un cluster prod.
+		-	Un cluster test.
+		-	Une machine client prod.
+		-	Une machine client test.
+		-	Une machine pour la BDD test.
+		-	Une machine pour la BDD prod.
+	-	Containerisation de l'application une image docker via un plug in maven. 
+	-	Livraison et mise à disposition de l'application et de son service sur le cluster kubernetes. 
 
-- L'installation automatique de l'environement client
-	- 	Un cluster prod 
-	-	Un cluster test
-	-	Une machine client prod
-	-	Une machine client test
-	-	Une machine pour la BDD test
-	-	Une machine pour la BDD prod
+Ont aussi été automatisées : 
+	-	Le déploiement de l'architecture d'outils et leurs installations via role ansible sur un cloud azure : 
+		-	Une machine avec jenkins.
+		-	Une machine mavens / docker (slave jenkins).
+		-	Une machine nexus.
+		-	Un serveur Apache (proxy). 
 
-- Les elements manquants :
+- Les élèments à développer :
 	-	L'installation automatique des postes BDD
-	-	La containerisation et instanciation de machine docker pour utiliser en tant que slave jenkins
-	-	La creation d'un load balancer en entré du cluster. 
-	-	L'automatisation des actions suivante :
-			-	Le login au gcloud
-			-	La variabilisation des traitements associés (détection si un traitement doit affecté test ou prod en fonction de paramètre)
-	-	Au vue du retard pris l'application n'a pu être tester pour le moment. Le pod faisant bien tourné celui  
+	-	La containerisation et instanciation de machine docker pour les utiliser en tant que slave jenkins
+		-	Kubectl
+		-	Ansible
+		-	Terraform
+	-	La création d'un load balancer en entrée du cluster. 
+	-	L'automatisation des actions suivantes :
+		-	Le login au gcloud
+		-	La variabilisation des traitements associés (Webhook detectant une version affectant l'environement de test ou prod en fonction de paramètre)
+	
 
 
-
-Le projet necessitera l'installation sur jenkins du plug in suivant : 
-	-	Pipeline Utility Steps
-
-Il necessitera le fait de log in la machine maven / kubectl a google via un gcloud auth.
-
-
+Dans l'état actuel le projet nécessitera les étapes suivantes : 
+	-	Installation de kubectl/gcloud sur la machine maven.
+	-	Login d'un user google sur la machine maven/kubectl via un gcloud auth.
+	-	Installation du plugin jenkins : Pipeline Utility Steps
+	-	Installation du proxy pass ssh selon le modèle fourni dans le dossier ssh. 
+	-	Création des clés via le fichier fournit dans le dossier K8S/key. Il faudra utilisé la commande kubectl apply -k . 
+		(pour le lien clé dockerhub voir le guide suivant : https://github.com/BorisFyot/kubernetes/tree/master/tp3.5)
+	-	Dans l'état actuel des choses les tests unitaires ont été ignorés car il empêchait l'installation du projet maven. 
