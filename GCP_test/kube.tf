@@ -15,14 +15,14 @@ resource "google_container_cluster" "primary" {
     password = "BOURNE02-08-1984"
   }
 
-  master_authorized_networks_config {
-    cidr_blocks = [
-        { cidr_block = "${var.master_ip}", display_name = "acces-admin" }
-    ]
-  }
+  # master_authorized_networks_config {
+  #   cidr_blocks = [
+  #       { cidr_block = "${var.master_ip}", display_name = "acces-admin" }
+  #   ]
+  # }
   private_cluster_config {
     # enable_private_endpoint = true
-    enable_private_nodes = true
+    # enable_private_nodes = true
     master_ipv4_cidr_block = "${var.master_ipv4_cidr}"
   }
   ip_allocation_policy{
@@ -42,9 +42,9 @@ resource "google_container_node_pool" "machine1" {
     preemptible  = true
     machine_type = "n1-standard-1"
 
-    metadata {
-      disable-legacy-endpoints = "true"
-    }
+    # metadata {
+    #   disable-legacy-endpoints = "true"
+    # }
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
@@ -63,9 +63,9 @@ resource "google_container_node_pool" "machine2" {
     preemptible  = true
     machine_type = "n1-standard-1"
 
-    metadata {
-      disable-legacy-endpoints = "true"
-    }
+    # metadata {
+    #   disable-legacy-endpoints = "true"
+    # }
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
