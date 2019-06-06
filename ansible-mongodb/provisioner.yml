@@ -1,0 +1,10 @@
+---
+# This playbook intall apache on Ubuntu 16.04 and Jenkins on CentOS7.  
+
+- name: Install configure mongodb
+  hosts: db 
+  become: True
+  roles:
+    - samdoran.mongodb
+  tags:
+    - mongodb

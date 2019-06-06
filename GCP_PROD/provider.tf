@@ -4,13 +4,28 @@ provider "google" {
   region      = "${var.region}"
 }
 
+terraform {
+  backend "artifactory" {
+    # URL of the nexus repository
+    url      = "http://admin-projetci.westus.cloudapp.azure.com/nexus/repository/terraform/" 
+    # the repository name you just created
+    repo     = "terraform" 
+    # an unique path to for identification
+    subpath  = "projetci"
+    # an username that has permissions to the repository
+    username = "admin" 
+    # the password of the username you provided
+    password = "admin123" 
+  }
+}
+
 resource "google_compute_firewall" "admin" {
   name    = "${var.admin_firewall}"
   network = "${google_compute_network.my-network.name}"
 
   allow {
     protocol = "tcp"
-    ports    = ["8080", "22", "80"]
+    ports    = ["8080", "22", "80", "27017"]
   }
   target_tags = ["admin"]
 }
@@ -34,10 +49,10 @@ resource "google_compute_router_nat" "vpc-nat" {
 }
 
 
-resource "google_compute_project_metadata_item" "ssh-keys" {
-  key   = "${var.ssh_keys}"
-  value = "${var.ssh_user}:${var.public_key}"
-}
+# resource "google_compute_project_metadata_item" "ssh-keys" {
+#   key   = "${var.ssh_keys}"
+#   value = "${var.ssh_user}:${var.public_key}"
+# }
 
 resource "google_compute_subnetwork" "admin" {
   name          = "${var.admin_subnetwork_name}"

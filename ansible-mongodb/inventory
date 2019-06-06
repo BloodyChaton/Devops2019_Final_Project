@@ -1,0 +1,5 @@
+[db]
+35.228.5.197
+
+[all:vars]
+ansible_user=user01
