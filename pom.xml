@@ -17,7 +17,7 @@
     <properties>
         <java.version>12</java.version>
     </properties>
-    
+
     <!--distributionManagement>
         <snapshotRepository>
             <id>nexus-snapshot</id>
@@ -98,7 +98,5 @@
             </plugin>
         </plugins>
 </build>
-
-
 
 </project>
