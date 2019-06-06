@@ -10,6 +10,9 @@ resource "google_compute_instance" "client" {
       image = "centos-7"
     }
   }
+  metadata {
+    sshKeys="${var.sshKeys_user}:${file("~/.ssh/id_rsa.pub")}"
+  }
 
   network_interface {
     # A default network is created for all GCP projects
@@ -33,6 +36,9 @@ resource "google_compute_instance" "mongodb" {
     initialize_params {
       image = "centos-7"
     }
+  }
+  metadata {
+    sshKeys="${var.sshKeys_user}:${file("~/.ssh/id_rsa.pub")}"
   }
 
   network_interface {

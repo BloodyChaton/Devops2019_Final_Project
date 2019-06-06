@@ -11,6 +11,10 @@ resource "google_compute_instance" "client" {
     }
   }
 
+  metadata {
+    sshKeys="${var.sshKeys_user}:${file("~/.ssh/id_rsa.pub")}"
+  }
+
   network_interface {
     # A default network is created for all GCP projects
     network       = "${google_compute_network.my-network.name}"
@@ -35,10 +39,16 @@ resource "google_compute_instance" "db" {
     }
   }
 
+  metadata {
+    sshKeys="${var.sshKeys_user}:${file("~/.ssh/id_rsa.pub")}"
+  }
+  
   network_interface {
     # A default network is created for all GCP projects
     network       = "${google_compute_network.my-network.name}"
     subnetwork    = "${google_compute_subnetwork.mongodb.name}"
     network_ip    = "${var.mongodb_adress}"
+    access_config = {
+    }
   }
 }
