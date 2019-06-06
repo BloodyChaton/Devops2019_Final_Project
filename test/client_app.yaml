@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-pods
+  namespace: test
+  labels:
+    app: apps
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apps
+  template:
+    metadata:
+      name: hello-go
+      namespace: deployment
+      labels:
+        app: apps
+    spec:
+     containers:
+     - name: apps
+       image: borisfyot/app:1.0.0-SNAPSHOT
+     imagePullSecrets:
+      - name: thesecretkey-m8gh5b2d5c

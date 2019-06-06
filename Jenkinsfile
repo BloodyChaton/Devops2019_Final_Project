@@ -13,7 +13,7 @@ pipeline {
         
         stage('checkout') {
             steps {
-                git branch: 'features/luc_sshGCP', credentialsId: 'abc6116c-57e5-4151-ac31-8a621c480f72', url: 'https://github.com/BorisFyot/Devops2019_Final_Project.git'
+                git branch: 'devs', credentialsId: 'abc6116c-57e5-4151-ac31-8a621c480f72', url: 'https://github.com/BorisFyot/Devops2019_Final_Project.git'
 			}
         }
 
@@ -62,11 +62,11 @@ pipeline {
 	// 	        sh 'docker push borisfyot/app:${VERSION}'
 	// 	    }
     //     }
-        stage('checkout2') {
-            steps {
-                git branch: 'features/app', credentialsId: 'abc6116c-57e5-4151-ac31-8a621c480f72', url: 'https://github.com/BorisFyot/Devops2019_Final_Project.git'
-			}
-        }
+    //    stage('checkout2') {
+    //        steps {
+    //            git branch: 'features/app', credentialsId: 'abc6116c-57e5-4151-ac31-8a621c480f72', url: 'https://github.com/BorisFyot/Devops2019_Final_Project.git'
+	//		}
+    //    }
         stage('maven') {
             steps {
                 sh 'mvn install -Dmaven.test.skip=true'

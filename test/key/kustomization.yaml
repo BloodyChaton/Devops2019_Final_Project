@@ -1,0 +1,8 @@
+secretGenerator:
+- name: thesecretkey
+  type: docker-registry
+  literals:
+  - docker-server=https://index.docker.io/v1/
+  - docker-username=borisfyot
+  - docker-password=-----
+  - docker-email=boris.fyot@gmail.com
