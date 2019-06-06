@@ -89,7 +89,6 @@ pipeline {
             steps {
                 sh 'echo $PATH'
                 sh 'gcloud container clusters get-credentials test-cluster --zone europe-north1-a --project united-lane-241907'
-                git branch: 'features/kubernetes', credentialsId: 'abc6116c-57e5-4151-ac31-8a621c480f72', url: 'https://github.com/BorisFyot/Devops2019_Final_Project.git'
             }
         }
         stage('namespace') {
