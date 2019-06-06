@@ -3,6 +3,7 @@ pipeline {
         label 'mavenslave'
     }
 
+
     // environment {
     //     SVC_ACCOUNT_KEY = credentials('jsonterraform')
     // }
@@ -61,6 +62,5 @@ pipeline {
 	// 	        sh 'docker push borisfyot/app:${VERSION}'
 	// 	    }
     //     }
-        
-    }
+            }
 }
