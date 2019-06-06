@@ -20,15 +20,16 @@ resource "google_container_cluster" "primary" {
         { cidr_block = "${var.master_ip}", display_name = "acces-admin" }
     ]
   }
-  # private_cluster_config {
-  #   # enable_private_endpoint = true
-  #   enable_private_nodes = true
-  #   master_ipv4_cidr_block = "${var.master_ipv4_cidr}"
-  # }
+  private_cluster_config {
+    # enable_private_endpoint = true
+    # enable_private_nodes = true
+    master_ipv4_cidr_block = "${var.master_ipv4_cidr}"
+  }
   ip_allocation_policy{
     cluster_secondary_range_name = "${var.kube_subnetwork_node_name}"
     services_secondary_range_name = "${var.kube_subnetwork_serv_name}"
   }
+ 
 }
 
 resource "google_container_node_pool" "machine1" {
