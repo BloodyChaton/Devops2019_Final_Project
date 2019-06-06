@@ -77,3 +77,11 @@
     name: "{{ mongodb_service_name }}"
     enabled: yes
     state: started
+
+- name: create collection customers
+  shell: mongo local --eval "db.createCollection('customers')"
+
+- name: add user
+  shell: mongo local --eval "db.customers.insert({firstName:'luc', lastName:'FYOT' })"
+
+
