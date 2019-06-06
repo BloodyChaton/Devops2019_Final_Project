@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: test-app-pods
-  namespace: kube
+  namespace: test
   labels:
     app: apps
 spec:
