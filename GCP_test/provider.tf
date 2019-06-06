@@ -49,10 +49,10 @@ resource "google_compute_router_nat" "vpc-nat" {
 }
 
 
-resource "google_compute_project_metadata_item" "ssh-keys" {
-  key   = "${var.ssh_keys}"
-  value = "${var.ssh_user}:${var.public_key}"
-}
+# resource "google_compute_project_metadata_item" "ssh-keys" {
+#   key   = "${var.ssh_keys}"
+#   value = "${var.ssh_user}:${var.public_key}"
+# }
 
 resource "google_compute_subnetwork" "admin" {
   name          = "${var.admin_subnetwork_name}"
