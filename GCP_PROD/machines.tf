@@ -10,6 +10,7 @@ resource "google_compute_instance" "client" {
       image = "centos-7"
     }
   }
+
   metadata {
     sshKeys="${var.sshKeys_user}:${file("~/.ssh/id_rsa.pub")}"
   }
@@ -25,7 +26,7 @@ resource "google_compute_instance" "client" {
 }
 
 
-resource "google_compute_instance" "mongodb" {
+resource "google_compute_instance" "db" {
   name         = "${var.mongodb_name}"
   machine_type = "n1-standard-1"
   zone         = "${var.zone}"
@@ -37,14 +38,21 @@ resource "google_compute_instance" "mongodb" {
       image = "centos-7"
     }
   }
+
   metadata {
     sshKeys="${var.sshKeys_user}:${file("~/.ssh/id_rsa.pub")}"
   }
-
+  
   network_interface {
     # A default network is created for all GCP projects
     network       = "${google_compute_network.my-network.name}"
     subnetwork    = "${google_compute_subnetwork.mongodb.name}"
     network_ip    = "${var.mongodb_adress}"
+    access_config = {
+    }
   }
+}
+resource "google_compute_project_metadata_item" "oslogin" {
+  key     = "enable-oslogin"
+  value   = "TRUE"
 }
