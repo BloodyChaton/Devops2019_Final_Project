@@ -99,12 +99,12 @@ pipeline {
         }
         stage('clientapp') {
         steps {
-                sh 'kubectl apply -f ./test/client_app.yaml'
+                sh 'kubectl apply -f ./k8s/client_app.yaml'
             }
         }
         stage('serviceapp') {
         steps {
-                sh 'kubectl apply -f ./test/service.yaml '
+                sh 'kubectl apply -f ./k8s/service.yaml '
             }
         }     
     }

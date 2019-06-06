@@ -1,0 +1,27 @@
+Host 10.0.0.10
+  User azureuser
+  ProxyCommand ssh -q -A azureuser@admin-projetci.westus.cloudapp.azure.com nc -w 300 %h %p
+
+Host 10.0.0.11
+  User azureuser
+  ProxyCommand ssh -q -A azureuser@admin-projetci.westus.cloudapp.azure.com nc -w 300 %h %p
+
+Host 10.0.0.12
+  User azureuser
+  ProxyCommand ssh -q -A azureuser@admin-projetci.westus.cloudapp.azure.com nc -w 300 %h %p
+
+Host admingcp
+  User user01
+  Hostname 35.228.212.140
+  IdentityFile ~/.ssh/id_rsa
+  StrictHostKeyChecking no
+
+
+Host mongo
+  User user01
+  Hostname 10.29.0.10
+  Port 22
+  ProxyCommand ssh -qW %h:%p admingcp
+
+
+
