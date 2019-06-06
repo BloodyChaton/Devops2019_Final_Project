@@ -19,8 +19,7 @@ pipeline {
 
         stage('GCPcredentials') {
             steps {
-                sh 'echo $SVC_ACCOUNT_KEY'
-                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > united-lane-241907-c7fa43cedef5.json'
+                sh 'echo $SVC_ACCOUNT_KEY | base64 --decode > united-lane-241907-c7fa43cedef5.json'
             }
         }
 
