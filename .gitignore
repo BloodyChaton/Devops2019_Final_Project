@@ -3,6 +3,12 @@ azure/terraform.tfstate.backup
 azure/.terraform
 azure/.terraform/*
 GCP_test/united-lane-241907-c7fa43cedef5.json
+GCP_test/.terraform
+GCP_test/.terraform/*
+GCP_PROD/.terraform
+GCP_PROD/.terraform/*
+GCP_test/terraform.tfstate
+GCP_test/terraform.tfstate.backup
 GCP_PROD/terraform.tfstate
 GCP_PROD/terraform.tfstate.backup
 GCP_PROD/united-lane-241907-c7fa43cedef5.json
