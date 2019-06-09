@@ -7,6 +7,7 @@ pipeline {
         SVC_ACCOUNT_KEY = credentials('json2')
         registry = "bloodychaton/projetfinal"
         registryCredential = 'dockerhub'
+        DHUB = credentials('dockerhub2')
     }
     tools {
         maven 'maven'
@@ -19,38 +20,38 @@ pipeline {
 			}
         }
 
-        stage('GCPcredentials') {
-            steps {
-                sh 'touch ./projet-final-243214-da8e41fa7a08.json'
-                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > GCP_test/projet-final-243214-da8e41fa7a08.json'
-            }
-        }
+        // stage('GCPcredentials') {
+        //     steps {
+        //         sh 'touch ./projet-final-243214-da8e41fa7a08.json'
+        //         sh 'echo $SVC_ACCOUNT_KEY | base64 -d > GCP_test/projet-final-243214-da8e41fa7a08.json'
+        //     }
+        // }
 
-        stage('tooling') {
-            steps {
-                script {
-                    def tfHome = tool name: 'terraform'
-                    env.PATH = "${tfHome}:${env.PATH}"
-                }
-            } 
-        }
+        // stage('tooling') {
+        //     steps {
+        //         script {
+        //             def tfHome = tool name: 'terraform'
+        //             env.PATH = "${tfHome}:${env.PATH}"
+        //         }
+        //     } 
+        // }
         
-        stage('tfinit') {
-            steps {
-                dir('GCP_test') {
-                    sh 'terraform init'
-                    sh 'terraform plan'
-                }
-            }
-        }
+        // stage('tfinit') {
+        //     steps {
+        //         dir('GCP_test') {
+        //             sh 'terraform init'
+        //             sh 'terraform plan'
+        //         }
+        //     }
+        // }
 
-        stage('tfapply') {
-            steps {
-                dir('GCP_test') {
-                    sh 'terraform apply -auto-approve'
-                }
-            }
-        }
+        // stage('tfapply') {
+        //     steps {
+        //         dir('GCP_test') {
+        //             sh 'terraform apply -auto-approve'
+        //         }
+        //     }
+        // }
         
 	//     stage('dockerhub') {
     //         environment {
@@ -83,6 +84,7 @@ pipeline {
             }
 		    steps {
 	            sh "echo ${VERSION}"
+                sh 'docker login -u bloodychaton -p $DHUB'
 	            sh 'docker images'
 		        sh 'docker push bloodychaton/projetfinal:${VERSION}'
 		    }

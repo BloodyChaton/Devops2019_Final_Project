@@ -1,5 +1,5 @@
 [db]
-35.228.5.197
+10.29.0.10
 
 [all:vars]
-ansible_user=user01
+ansible_user=jenkins
