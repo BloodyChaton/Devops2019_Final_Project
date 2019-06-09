@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = "${file("united-lane-241907-c7fa43cedef5.json")}"
+  credentials = "${file("projet-final-243214-da8e41fa7a08.json")}"
   project     = "${var.project}"
   region      = "${var.region}"
 }
@@ -7,7 +7,7 @@ provider "google" {
 terraform {
   backend "artifactory" {
     # URL of the nexus repository
-    url      = "http://admin-projetci.westus.cloudapp.azure.com/nexus/repository/terraform/" 
+    url      = "http://admin-projetci2.centralus.cloudapp.azure.com/nexus/repository/terraform/" 
     # the repository name you just created
     repo     = "terraform" 
     # an unique path to for identification
