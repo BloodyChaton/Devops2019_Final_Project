@@ -78,3 +78,7 @@
 # demarrer le service
 - name: démarrage du service nexus
   command: systemctl start nexus.service
+
+# enable 
+- name: démarrage du service nexus
+  command: systemctl enable nexus.service

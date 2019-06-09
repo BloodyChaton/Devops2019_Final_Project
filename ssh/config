@@ -1,14 +1,14 @@
 Host 10.0.0.10
   User azureuser
-  ProxyCommand ssh -q -A azureuser@admin-projetci.westus.cloudapp.azure.com nc -w 300 %h %p
+  ProxyCommand ssh -q -A azureuser@admin-projetci2.centralus.cloudapp.azure.com nc -w 300 %h %p
 
 Host 10.0.0.11
   User azureuser
-  ProxyCommand ssh -q -A azureuser@admin-projetci.westus.cloudapp.azure.com nc -w 300 %h %p
+  ProxyCommand ssh -q -A azureuser@admin-projetci2.centralus.cloudapp.azure.com nc -w 300 %h %p
 
 Host 10.0.0.12
   User azureuser
-  ProxyCommand ssh -q -A azureuser@admin-projetci.westus.cloudapp.azure.com nc -w 300 %h %p
+  ProxyCommand ssh -q -A azureuser@admin-projetci2.centralus.cloudapp.azure.com nc -w 300 %h %p
 
 Host admingcp
   User user01

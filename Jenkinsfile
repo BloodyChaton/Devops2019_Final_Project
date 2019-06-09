@@ -5,6 +5,8 @@ pipeline {
 
     environment {
         SVC_ACCOUNT_KEY = credentials('json2')
+        registry = "bloodychaton/projetfinal"
+        registryCredential = 'dockerhub'
     }
     tools {
         maven 'maven'
@@ -13,14 +15,14 @@ pipeline {
         
         stage('checkout') {
             steps {
-                git branch: 'devs', credentialsId: 'abc6116c-57e5-4151-ac31-8a621c480f72', url: 'https://github.com/BorisFyot/Devops2019_Final_Project.git'
+                git branch: 'features/luc_after', credentialsId: 'GitHUBloody', url: 'https://github.com/BorisFyot/Devops2019_Final_Project.git'
 			}
         }
 
         stage('GCPcredentials') {
             steps {
-                sh 'touch ./united-lane-241907-c7fa43cedef5.json'
-                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > GCP_test/united-lane-241907-c7fa43cedef5.json'
+                sh 'touch ./projet-final-243214-da8e41fa7a08.json'
+                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > GCP_test/projet-final-243214-da8e41fa7a08.json'
             }
         }
 
@@ -82,13 +84,13 @@ pipeline {
 		    steps {
 	            sh "echo ${VERSION}"
 	            sh 'docker images'
-		        sh 'docker push borisfyot/app:${VERSION}'
+		        sh 'docker push bloodychaton/projetfinal:${VERSION}'
 		    }
         }
         stage('checkout3') {
             steps {
                 sh 'echo $PATH'
-                sh 'gcloud container clusters get-credentials test-cluster --zone europe-north1-a --project united-lane-241907'
+                sh 'gcloud container clusters get-credentials test-cluster --zone europe-north1-a --project projet-final-243214'
             }
         }
         stage('namespace') {
