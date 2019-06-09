@@ -7,7 +7,7 @@ resource "google_compute_instance" "client" {
 
   boot_disk {
     initialize_params {
-      image = "centos-7"
+      image = "ubuntu-1804-lts"
     }
   }
 
@@ -35,7 +35,7 @@ resource "google_compute_instance" "db" {
 
   boot_disk {
     initialize_params {
-      image = "centos-7"
+      image = "ubuntu-1804-lts"
     }
   }
 
