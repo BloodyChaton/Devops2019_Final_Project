@@ -1,61 +1,61 @@
 variable "server" {
-    type = "list"
+    type = list
 }
 
 variable "resourceG" {
-    type = "string"
+    type = string
 }
 
 variable "vn"{
-    type = "list"
+    type = list
 }
 
 variable "private_adress_vn" {
-    type = "list"
+    type = list
 }
 
 variable "PrivateIP" {
-    type = "list"
+    type = list
 }
 
 variable "subvn"{
-    type= "list"
+    type= list
 }
 variable "private_adress_subvn" {
-    type = "list"
+    type = list
 }
 variable "ips"{
-    type= "list"
+    type= list
 }
 
 variable "NSG"{
-    type= "list"
+    type= list
 }
 
 variable "NIC"{
-    type= "list"
+    type= list
 }
 
 variable "NIConfig"{
-    type= "list"
+    type= list
 }
 
 variable "VM"{
-    type= "list"
+    type= list
 }
 
 # variable "sshkey" {
-#     type= "string"
+#     type= string
 # }
 
 variable "useradmin" {
-    type= "string"
+    type= string
 }
 
 variable "nametag" {
-    type= "list"
+    type= list
 }
 
 variable "DNS" {
-    type= "string"
+    type= string
 }
