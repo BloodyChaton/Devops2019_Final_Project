@@ -47,7 +47,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
   location            = "${azurerm_resource_group.rg.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   network_interface_ids = ["${azurerm_network_interface.myterraformnic.id}"]
-  vm_size               = "Standard_B1ms"
+  vm_size               = "Standard_D2as_v5"
 
   storage_os_disk {
     name              = "${var.VM[3]}-osdisk"
@@ -57,9 +57,9 @@ resource "azurerm_virtual_machine" "myterraformvm" {
   }
 
   storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
+    publisher = "OpenLogic"
+    offer     = "CentOS"
+    sku       = "7_9-gen2"
     version   = "latest"
   }
 
