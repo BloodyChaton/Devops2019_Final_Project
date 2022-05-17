@@ -1,47 +1,47 @@
 variable "server" {
-    type = list
+  type = list(any)
 }
 
 variable "resourceG" {
-    type = string
+  type = string
 }
 
-variable "vn"{
-    type = list
+variable "vn" {
+  type = list(any)
 }
 
 variable "private_adress_vn" {
-    type = list
+  type = list(any)
 }
 
 variable "PrivateIP" {
-    type = list
+  type = list(any)
 }
 
-variable "subvn"{
-    type= list
+variable "subvn" {
+  type = list(any)
 }
 variable "private_adress_subvn" {
-    type = list
+  type = list(any)
 }
-variable "ips"{
-    type= list
-}
-
-variable "NSG"{
-    type= list
+variable "ips" {
+  type = list(any)
 }
 
-variable "NIC"{
-    type= list
+variable "NSG" {
+  type = list(any)
 }
 
-variable "NIConfig"{
-    type= list
+variable "NIC" {
+  type = list(any)
 }
 
-variable "VM"{
-    type= list
+variable "NIConfig" {
+  type = list(any)
+}
+
+variable "VM" {
+  type = list(any)
 }
 
 # variable "sshkey" {
@@ -49,13 +49,13 @@ variable "VM"{
 # }
 
 variable "useradmin" {
-    type= string
+  type = string
 }
 
 variable "nametag" {
-    type= list
+  type = list(any)
 }
 
 variable "DNS" {
-    type= string
+  type = string
 }
