@@ -47,7 +47,7 @@ resource "azurerm_virtual_machine" "myterraformvm2" {
   location            = "${azurerm_resource_group.rg.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   network_interface_ids = ["${element(azurerm_network_interface.myterraformnic2.*.id, count.index)}"]
-  vm_size               = "Standard_B1ms"
+  vm_size               = "Standard_D2as_v5"
   count = 3
 
   storage_os_disk {
@@ -60,7 +60,7 @@ resource "azurerm_virtual_machine" "myterraformvm2" {
   storage_image_reference {
     publisher = "OpenLogic"
     offer     = "CentOS"
-    sku       = "7.5"
+    sku       = "7_9-gen2"
     version   = "latest"
   }
 
