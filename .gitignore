@@ -2,3 +2,4 @@ azure/terraform.tfstate
 azure/terraform.tfstate.backup
 azure/.terraform
 azure/.terraform/*
+.terraform.lock.hcl
