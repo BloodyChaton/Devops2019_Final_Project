@@ -1,9 +1,9 @@
 resource "azurerm_subnet" "myterraformsubnet2" {
-  name                      = var.subvn[1]
-  resource_group_name       = azurerm_resource_group.rg.name
-  virtual_network_name      = azurerm_virtual_network.myterraformnetwork.name
-  address_prefix            = var.private_adress_subvn[0]
-  network_security_group_id = azurerm_network_security_group.myterraformnsg2.id
+  name                 = var.subvn[1]
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.myterraformnetwork.name
+  address_prefixes     = [var.private_adress_subvn[0]]
+  #  network_security_group_id = azurerm_network_security_group.myterraformnsg2.id
 }
 
 # Create public IPs 
@@ -93,7 +93,7 @@ resource "azurerm_network_security_group" "myterraformnsg2" {
     destination_address_prefix = "*"
   }
 
-  tags {
+  tags = {
     environment = "dev"
   }
 }

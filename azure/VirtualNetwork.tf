@@ -1,4 +1,6 @@
-provider "azurerm" {}
+provider "azurerm" {
+  features {}
+}
 
 resource "azurerm_resource_group" "rg" {
   name     = var.resourceG
@@ -11,3 +13,5 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
+
+

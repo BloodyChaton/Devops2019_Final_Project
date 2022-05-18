@@ -1,11 +1,11 @@
 
 # Create network interface
 resource "azurerm_network_interface" "myterraformnic2" {
-  name                      = "${var.NIC[1]}-${count.index}"
-  location                  = azurerm_resource_group.rg.location
-  resource_group_name       = azurerm_resource_group.rg.name
-  network_security_group_id = azurerm_network_security_group.myterraformnsg2.id
-  count                     = 3
+  name                = "${var.NIC[1]}-${count.index}"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  #network_security_group_id = azurerm_network_security_group.myterraformnsg2.id
+  count = 3
   ip_configuration {
     name                          = "${var.NIConfig[1]}-${count.index}"
     subnet_id                     = azurerm_subnet.myterraformsubnet2.id
@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "myterraformnic2" {
     private_ip_address            = var.PrivateIP["${count.index}"]
   }
 
-  tags {
+  tags = {
     environment = "dev"
   }
 }
@@ -36,7 +36,7 @@ resource "azurerm_network_interface" "myterraformnic2" {
 #   account_tier             = "Standard"
 #   account_replication_type = "LRS"
 
-#   tags {
+#   tags = {
 #     environment = "dev"
 #   }
 # }
@@ -48,8 +48,7 @@ resource "azurerm_virtual_machine" "myterraformvm2" {
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = ["${element(azurerm_network_interface.myterraformnic2.*.id, count.index)}"]
   vm_size               = "Standard_D2as_v5"
-  count                 = 3
-
+  count                 = 1
   storage_os_disk {
     name              = "${var.VM[1]}-osdisk-${count.index}"
     caching           = "ReadWrite"
@@ -82,7 +81,7 @@ resource "azurerm_virtual_machine" "myterraformvm2" {
     storage_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
   }
 
-  tags {
+  tags = {
     environment = "dev"
     name        = var.nametag["${count.index}"]
   }
